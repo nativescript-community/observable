@@ -1,12 +1,12 @@
 
-import { EventData, Observable } from 'tns-core-modules/data/observable';
+import { EventData, Observable as NObservable } from 'tns-core-modules/data/observable';
 declare module 'tns-core-modules/data/observable' {
     interface Observable {
         _getEventList(eventName: string, createIfNeeded?: boolean): any[];
     }
 }
 
-export class CustomObservable extends Observable {
+export default class Observable extends NObservable {
     onListenerAdded(eventName: string, count: number) {}
     onListenerRemoved(eventName: string, count: number) {}
     public addEventListener(eventNames: string, callback: (data: EventData) => void, thisArg?: Object) {
