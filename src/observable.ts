@@ -1,6 +1,5 @@
-
-import { EventData, Observable as NObservable } from 'tns-core-modules/data/observable';
-declare module 'tns-core-modules/data/observable' {
+import { EventData, Observable as NObservable } from '@nativescript/core/data/observable';
+declare module '@nativescript/core/data/observable' {
     interface Observable {
         _getEventList(eventName: string, createIfNeeded?: boolean): any[];
     }
