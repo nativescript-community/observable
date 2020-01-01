@@ -26,4 +26,19 @@ export default class Observable extends NObservable {
             this.onListenerRemoved(event, list ? list.length : 0);
         }
     }
+    on(eventNames: string, callback: (data: EventData) => void, thisArg?: any) {
+        super.on(eventNames, callback, thisArg);
+        return this;
+    }
+
+
+    once(event: string, callback: (data: EventData) => void, thisArg?: any){
+        super.once(event, callback, thisArg);
+        return this;
+    }
+
+    off(eventNames: string, callback?: any, thisArg?: any){
+        super.off(eventNames, callback, thisArg);
+        return this;
+    }
 }
