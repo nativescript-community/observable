@@ -1,6 +1,6 @@
 {
     "name": "nativescript-observable",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "Nativescript Observable class extension.",
     "main": "./observable",
     "typings": "./observable.d.ts",
