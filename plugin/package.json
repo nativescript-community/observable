@@ -2,7 +2,8 @@
     "name": "nativescript-observable",
     "version": "2.0.2",
     "description": "Nativescript Observable class extension.",
-    "main": "./observable",
+    "main": "./observable.js",
+    "module": "./observable.mjs",
     "typings": "./observable.d.ts",
     "nativescript": {
         "platforms": {
