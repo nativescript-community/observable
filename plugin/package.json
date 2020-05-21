@@ -4,6 +4,7 @@
     "description": "Nativescript Observable class extension.",
     "main": "./observable.js",
     "module": "./observable.mjs",
+    "sideEffects": false,
     "typings": "./observable.d.ts",
     "nativescript": {
         "platforms": {
