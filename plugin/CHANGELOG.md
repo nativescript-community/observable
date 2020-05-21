@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.4](https://github.com/Akylas/nativescript-observable/compare/v2.0.3...v2.0.4) (2020-05-21)
+
+
+### Bug Fixes
+
+* sideEffects for tree shacking ([902502b](https://github.com/Akylas/nativescript-observable/commit/902502ba606d3d0bd53314c312e9f376ed63664b))
+
+
+
+
+
 ## [2.0.3](https://github.com/Akylas/nativescript-observable/compare/v2.0.2...v2.0.3) (2020-05-21)
 
 
