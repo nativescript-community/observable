@@ -1,42 +1,40 @@
 {
-    "name": "nativescript-observable",
+    "name": "@nativescript-community/observable",
     "version": "1.0.0",
     "scripts": {
         "tsc": "tsc -skipLibCheck -d",
-        "build": " cp README.md plugin/ && rm -f .tsbuildinfo && npm run tsc && npm run build.esm",
-        "build.esm": "tsc -skipLibCheck --target es2015 --module esnext --removeComments --outDir build/esm && node ./build.esm.js",
+        "build": " cp README.md plugin/ && rm -f .tsbuildinfo && npm run tsc",
         "clean": "rimraf plugin/ios plugin/android plugin/**/*.d.ts plugin/**/*.js plugin/**/*.js.map plugin/node_modules plugin/package-lock.json",
         "plugin.watch.tsc": "npm run tsc -- -w",
         "publish": "npm run build && lerna publish",
         "commitmsg": "commitlint -e $GIT_PARAMS"
     },
     "devDependencies": {
-        "@commitlint/cli": "^8.2.0",
-        "@commitlint/config-conventional": "^8.2.0",
-        "@nativescript/core": "rc",
-        "@types/node": "^12.12.0",
-        "husky": "^3.0.9",
-        "lerna": "^3.18.3",
+        "@commitlint/cli": "^9.1.2",
+        "@commitlint/config-conventional": "^9.1.2",
+        "@nativescript/core": "7.0.0",
+        "@nativescript/types-android": "7.0.2",
+        "@nativescript/types-ios": "7.0.1",
+        "@types/node": "^14.6.4",
+        "@typescript-eslint/eslint-plugin": "4.0.1",
+        "@typescript-eslint/parser": "4.0.1",
+        "eslint": "7.8.1",
+        "husky": "^4.2.5",
+        "lerna": "^3.22.1",
         "prompt": "^1.0.0",
-        "recursive-copy": "^2.0.10",
         "rimraf": "^3.0.2",
-        "through2": "^3.0.1",
-        "tns-platform-declarations": "rc",
-        "tslint": "^5.20.0",
-        "tslint-config-prettier": "^1.18.0",
-        "tslint-config-standard": "^8.0.1",
-        "typescript": "~3.6.4"
+        "typescript": "~3.9.7"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Akylas/nativescript-observable.git"
+        "url": "git+https://github.com/Akylas/@nativescript-community/observable.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Akylas/nativescript-observable/issues"
+        "url": "https://github.com/nativescript-community/observable/issues"
     },
-    "homepage": "https://github.com/Akylas/nativescript-observable#readme",
+    "homepage": "https://github.com/Akylas/@nativescript-community/observable#readme",
     "commitlint": {
         "extends": [
             "@commitlint/config-conventional"

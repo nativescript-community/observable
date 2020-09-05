@@ -1,5 +1,5 @@
 {
-    "name": "nativescript-observable",
+    "name": "@nativescript-community/observable",
     "version": "2.0.7",
     "description": "Nativescript Observable class extension.",
     "main": "./observable",
@@ -22,9 +22,9 @@
         "email": "martin@akylas.fr"
     },
     "bugs": {
-        "url": "https://github.com/Akylas/nativescript-observable/issues"
+        "url": "https://github.com/nativescript-community/observable/issues"
     },
     "license": "Apache-2.0",
-    "homepage": "https://github.com/Akylas/nativescript-observable",
+    "homepage": "https://github.com/Akylas/@nativescript-community/observable",
     "readmeFilename": "README.md"
 }

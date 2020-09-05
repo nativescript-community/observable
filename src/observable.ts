@@ -4,6 +4,7 @@ declare module '@nativescript/core/data/observable' {
         _getEventList(eventName: string, createIfNeeded?: boolean): any[];
     }
 }
+export { EventData };
 
 export default class Observable extends NObservable {
     onListenerAdded(eventName: string, count: number) {}
@@ -31,13 +32,12 @@ export default class Observable extends NObservable {
         return this;
     }
 
-
-    once(event: string, callback: (data: EventData) => void, thisArg?: any){
+    once(event: string, callback: (data: EventData) => void, thisArg?: any) {
         super.once(event, callback, thisArg);
         return this;
     }
 
-    off(eventNames: string, callback?: any, thisArg?: any){
+    off(eventNames: string, callback?: any, thisArg?: any) {
         super.off(eventNames, callback, thisArg);
         return this;
     }
