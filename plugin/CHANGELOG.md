@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.9](https://github.com/Akylas/nativescript-observable/compare/v2.0.8...v2.0.9) (2020-11-25)
+
+**Note:** Version bump only for package @nativescript-community/observable
+
+
+
+
+
 ## [2.0.8](https://github.com/Akylas/nativescript-observable/compare/v2.0.7...v2.0.8) (2020-09-05)
 
 **Note:** Version bump only for package @nativescript-community/observable

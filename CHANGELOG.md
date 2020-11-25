@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.9](http://github.com/Akylas/@nativescript-community/observable/compare/v2.0.8...v2.0.9) (2020-11-25)
+
+
+### Features
+
+* added the new arraylike ObservableArray ([9b3a60f](http://github.com/Akylas/@nativescript-community/observable/commit/9b3a60f691c788b970c81a3346a34a4217659800))
+
+
+
+
+
 ## [2.0.8](http://github.com/Akylas/@nativescript-community/observable/compare/v2.0.7...v2.0.8) (2020-09-05)
 
 **Note:** Version bump only for package @nativescript-community/observable
