@@ -26,10 +26,7 @@
             "tns-core-modules/*": ["./node_modules/@nativescript/core/*"],
             "@nativescript-community/observable": ["src/observable"],
             "*": ["node_modules/*"]
-        },
-        "plugins": [
-          { "transform": "./node_modules/@nativescript/webpack/transformers/ns-transform-native-classes", "type": "raw" }
-        ]
+        }
     },
     "include": ["src/**/*", "./references.d.ts"],
     "exclude": ["node_modules", "platforms"],
