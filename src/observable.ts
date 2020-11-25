@@ -5,6 +5,7 @@ declare module '@nativescript/core/data/observable' {
     }
 }
 export { EventData };
+export { ObservableArray } from './observablearray';
 
 export default class Observable extends NObservable {
     onListenerAdded(eventName: string, count: number) {}
