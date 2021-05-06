@@ -3,11 +3,11 @@ import { ChangeType, ChangedData } from '@nativescript/core/data/observable-arra
 
 const CHANGE = 'change';
 
-declare class ObservableArray<T> extends Observable {
+declare class ObservableArrayType<T> extends Observable {
     getItem(index: number): T;
     setItem(index: number, value: T);
 }
-type MyProxyConstructor = (new <T>(...args) => ObservableArray<T> & T[]) & {changeEvent: string};
+type MyProxyConstructor = (new <T>(...args) => ObservableArrayType<T> & T[]) & {changeEvent: string};
 
 class ObservableArrayInsideObservable<T> extends Observable {
     _addArgs?: ChangedData<T>;
@@ -49,12 +49,11 @@ class ObservableArrayInsideObservable<T> extends Observable {
         }
     }
 }
-// @ts-ignore
-const ObservableArrayImpl = class<T>{
+let ID_INCREMENT = 0;
+export  class ObservableArray<T>{
     public static changeEvent = CHANGE;
     length: number;
     private _observable: ObservableArrayInsideObservable<T>;
-
     // push,, shift ... will trigger set proxy handler call
     // in those cases we dont want single change notification
     // we will trigger after the full operation is finished
@@ -66,26 +65,21 @@ const ObservableArrayImpl = class<T>{
     private shouldIgnoreOps = false;
 
     constructor(...args) {
-        this._observable = new ObservableArrayInsideObservable<T>(this);
+        let result;
         if (args.length === 1) {
-            return new Proxy(args[0].slice(), this);
+            result = new Proxy(args[0].slice(), this);
         } else {
-            return new Proxy([...args], this);
+            result =  new Proxy([...args], this);
         }
+        this._observable = new ObservableArrayInsideObservable<T>(result);
+        result.id = ID_INCREMENT++;
+        return result;
     }
 
     toString() {
         return '[ObservableArray]';
     }
-    getItem(index: number): T {
-        return this[index];
-    }
-    /**
-	 * Sets item at specified index.
-	 */
-    setItem(index: number, value: T) {
-        this[index] = value;
-    }
+    
     static [Symbol.hasInstance](instance) {
         return true;
     }
@@ -93,16 +87,27 @@ const ObservableArrayImpl = class<T>{
         return Observable.prototype;
     }
     get(target, prop) {
-        const that = this;
-        const notifier = that._observable;
-        const val = target[prop];
+        
         if (typeof prop === 'symbol') {
             return target[prop];
         }
-        if (!val && typeof notifier[prop] === 'function') {
-            return notifier[prop].bind(notifier);
-        }
-        if (typeof val === 'function') {
+        const that = this;
+        const notifier = that._observable;
+        const val = target[prop];
+        // console.log('get', prop);
+        if (!val) {
+            if (!val && typeof notifier[prop] === 'function') {
+                return notifier[prop].bind(notifier);
+            } else if (prop === 'getItem') {
+                return function (index){
+                    return target[index]
+                };
+            } else if (prop === 'setItem') {
+                return function (index, value){
+                    return this[index] = value;
+                };
+            }
+        } else if (typeof val === 'function') {
             if (prop === 'toString') {
                 return function (){
                     return JSON.stringify(target);
@@ -124,7 +129,6 @@ const ObservableArrayImpl = class<T>{
                     that.shouldIgnoreSet = false;
                     notifier.notify({
                         eventName: CHANGE,
-                        object: this,
                         action: ChangeType.Splice,
                         index: 0,
                         removed,
@@ -192,7 +196,6 @@ const ObservableArrayImpl = class<T>{
                     that.shouldIgnoreSet = false;
                     notifier.notify({
                         eventName: CHANGE,
-                        object: this,
                         action: ChangeType.Splice,
 
                         // The logic here is a bit weird; so lets explain why it is written this way
@@ -212,7 +215,6 @@ const ObservableArrayImpl = class<T>{
                     return result;
                 };
             }
-            return val;
         }
         return val;
     }
@@ -222,7 +224,6 @@ const ObservableArrayImpl = class<T>{
             if (!this.shouldIgnoreSet) {
                 event  ={
                     eventName: CHANGE,
-                    object: this,
                     action: ChangeType.Update,
                     index: key,
                     removed: [target[key]],
@@ -243,7 +244,6 @@ const ObservableArrayImpl = class<T>{
             if (!this.shouldIgnoreSet) {
                 event = {
                     eventName: CHANGE,
-                    object: this,
                     action: ChangeType.Update,
                     index: key,
                     removed: [target[key]],
@@ -257,5 +257,4 @@ const ObservableArrayImpl = class<T>{
         }
         return true;
     }
-} as MyProxyConstructor ;
-export {ObservableArrayImpl as ObservableArray};
+}
