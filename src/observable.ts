@@ -30,11 +30,29 @@ export default class Observable extends NObservable {
     }
     on(eventNames: string, callback: (data: EventData) => void, thisArg?: any) {
         super.on(eventNames, callback, thisArg);
+        
         return this;
     }
 
     once(event: string, callback: (data: EventData) => void, thisArg?: any) {
-        super.once(event, callback, thisArg);
+        const events = event.split(',');
+        const cleanup = ()=>{
+            for (let i = 0, l = events.length; i < l; i++) {
+                const event = events[i].trim();
+                const list = this._getEventList(event);
+                this.onListenerRemoved(event, list ? list.length : 0);
+            }
+        }
+        const realCallback = function(data){
+            callback(data);
+            cleanup();
+        }
+        super.once(event, realCallback, thisArg);
+        for (let i = 0, l = events.length; i < l; i++) {
+            const event = events[i].trim();
+            const list = this._getEventList(event);
+            this.onListenerAdded(event, list ? list.length : 0);
+        }
         return this;
     }
 
