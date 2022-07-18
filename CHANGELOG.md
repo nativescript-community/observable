@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.11](http://github.com/Akylas/@nativescript-community/observable/compare/v2.0.10...v2.0.11) (2022-07-18)
+
+
+### Bug Fixes
+
+* latest N compatibiilty ([526654d](http://github.com/Akylas/@nativescript-community/observable/commit/526654dd87a39aea5926b549a1d8b12269560d85))
+
+
+
+
+
 ## [2.0.10](http://github.com/Akylas/@nativescript-community/observable/compare/v2.0.9...v2.0.10) (2021-05-06)
 
 
