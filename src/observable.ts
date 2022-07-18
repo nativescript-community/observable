@@ -1,7 +1,7 @@
 import { EventData, Observable as NObservable } from '@nativescript/core/data/observable';
 declare module '@nativescript/core/data/observable' {
     interface Observable {
-        _getEventList(eventName: string, createIfNeeded?: boolean): any[];
+        _getEventList?(eventName: string, createIfNeeded?: boolean): any[];
     }
 }
 export { EventData };
